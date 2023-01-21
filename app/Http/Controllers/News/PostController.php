@@ -88,6 +88,7 @@ class PostController extends Controller
      */
     public function update(StorePostRequest $request)
     {
+         try{
         //Update The News
         $news = post::findOrFail($request->id);
         $news->title = $request->title;
@@ -104,6 +105,10 @@ class PostController extends Controller
         $news->save();
         session()->flash('edit','The News has been added successfully');
         return redirect('/News');
+         }
+        catch(\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+         }
     }
 
     /**
