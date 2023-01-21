@@ -35,5 +35,5 @@ Route::post('Filter_News', [PostController::class,'Filter_Classes'])->name('Filt
 //==========================Tags===========================
 Route::resource('Tags', TagsController::class);
 
-
+//==========================Get To Select Any Page===========================
 Route::get('/{page}', [AdminController::class,'index']);
