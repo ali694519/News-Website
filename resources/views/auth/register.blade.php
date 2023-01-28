@@ -1,6 +1,7 @@
 @extends('layouts.master2')
 @section('title')
     Register-news programme
+    {{ $title ?? '' }}{{ __('Register') }}
 @stop
 
 @section('css')
@@ -37,66 +38,72 @@
                                         <h2 class="text-primary">Get Started</h2>
                                         <h5 class="font-weight-normal mb-4">.It's free to signup and only takes a minute
                                         </h5>
-                                        <form method="POST" action="{{ route('register') }}">
-                                            @csrf
-                                            <div class="form-group">
-                                                <label>Firstname &amp; Lastname</label> <input
-                                                    class="form-control
+
+                                        @isset($route)
+                                            <form method="POST" action="{{ $route }}">
+                                            @else
+                                                <form method="POST" action="{{ route('register') }}">
+                                                @endisset
+
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label>Firstname &amp; Lastname</label> <input
+                                                        class="form-control
                                                 @error('name') is-invalid @enderror"
-                                                    name="name" value="{{ old('name') }}" required
-                                                    placeholder="Enter your firstname and lastname" type="text">
-                                                @error('name')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
+                                                        name="name" value="{{ old('name') }}" required
+                                                        placeholder="Enter your firstname and lastname" type="text">
+                                                    @error('name')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input id="email" type="email"
-                                                    class="form-control
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input id="email" type="email"
+                                                        class="form-control
                                                 @error('email') is-invalid @enderror"
-                                                    name="email" value="{{ old('email') }}" required
-                                                    placeholder="Enter your email">
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                                        name="email" value="{{ old('email') }}" required
+                                                        placeholder="Enter your email">
+                                                    @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Password</label>
+
+
+                                                    <input id="password" type="password"
+                                                        class="form-control @error('password') is-invalid @enderror"
+                                                        placeholder="Enter your password" name="password" required
+                                                        autocomplete="new-password">
+                                                    @error('password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>confrim Password</label>
+                                                    <input id="password-confirm" type="password"class="form-control"
+                                                        placeholder="Enter your password" required
+                                                        autocomplete="new-password" name="password_confirmation">
+                                                </div>
+
+
+
+                                                <button type="submit" class="btn btn-main-primary btn-block">Create
+                                                    Account</button>
+                                            </form>
+                                            <div class="main-signup-footer mt-5">
+                                                <p>Already have an account? <a href="/login">Sign
+                                                        In</a></p>
                                             </div>
-
-                                            <div class="form-group">
-                                                <label>Password</label>
-
-
-                                                <input id="password" type="password"
-                                                    class="form-control @error('password') is-invalid @enderror"
-                                                    placeholder="Enter your password" name="password" required
-                                                    autocomplete="new-password">
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>confrim Password</label>
-                                                <input id="password-confirm" type="password"class="form-control"
-                                                    placeholder="Enter your password" required autocomplete="new-password"
-                                                    name="password_confirmation">
-                                            </div>
-
-
-
-                                            <button type="submit" class="btn btn-main-primary btn-block">Create
-                                                Account</button>
-                                        </form>
-                                        <div class="main-signup-footer mt-5">
-                                            <p>Already have an account? <a href="/login">Sign
-                                                    In</a></p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

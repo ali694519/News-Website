@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+    Home-news programme
+@stop
 @section('css')
     <!--  Owl-carousel css-->
     <link href="{{ URL::asset('assets/plugins/owl-carousel/owl.carousel.css') }}" rel="stylesheet" />
@@ -60,7 +63,7 @@
                             Share <i class="icon ion-logo-facebook mg-l-5 mg-r-5"></i>
                             <i class="icon ion-logo-twitter"></i>
                         </div>
-                        <span>{{ $ne->created_at }}</span>
+                        <span>{{ date('d-m-Y ', strtotime($ne->created_at)) }}</span>
 
                     </div>
                 </div>

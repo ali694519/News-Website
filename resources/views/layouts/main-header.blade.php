@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="wd-90p">
                                     <div class="d-flex">
-                                        <h5 class="mb-1 name">{{ Auth::user()->name }}</h5>
+                                        <h5 class="mb-1 name"></h5>
                                     </div>
                                     <p class="mb-0 desc">I'm sorry but i'm not sure how to help you with that......</p>
                                     <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>

@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+    Search-news programme
+@stop
 @section('css')
 @endsection
 @section('page-header')

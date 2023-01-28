@@ -72,7 +72,7 @@
                                     <button type="submit" class="btn ripple btn-primary" type="button">Search</button>
                                 </span>
                             </div>
-                        </div>
+                    </div>
                     </form>
                 </div>
                 <div class="card-body">
@@ -107,7 +107,7 @@
                                                     <span class="tag tag-purple">{{ $tag['tag_name'] }}</span>
                                                 @endforeach
                                             </td>
-                                            <td>{{ $ne->created_at }}</td>
+                                            <td>{{ date('d-m-Y H:i:s', strtotime($ne->created_at)) }}</td>
                                             <td>
                                                 {{-- Edit --}}
                                                 <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
@@ -146,8 +146,7 @@
                                                                 <div class="form-group">
                                                                     <input type="hidden" name="id"
                                                                         value="{{ $ne->id }}">
-                                                                    <label for="recipient-name"
-                                                                        class="col-form-label">News
+                                                                    <label for="recipient-name" class="col-form-label">News
                                                                         Name</label>
                                                                     <input class="form-control"
                                                                         value="{{ $ne->title }}" name="title"
@@ -196,7 +195,7 @@
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
-                                                                
+
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-success">Save</button>
