@@ -42,7 +42,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
  Route::resource('/admin/dashboard', AAdminController::class)->middleware('auth:admin');
 
 
-
 //========================Categories=======================
     Route::resource('Categories', CategoryController::class);
 
@@ -53,10 +52,6 @@ Route::post('Filter_News', [PostController::class,'Filter_Classes'])->name('Filt
 //==========================Tags===========================
 Route::resource('Tags', TagsController::class);
 
-<<<<<<< HEAD
 
-
-=======
 //==========================Get To Select Any Page===========================
->>>>>>> a0548979031af752bb1b913c11857915dacfb70c
 Route::get('/{page}', [AdminController::class,'index']);
