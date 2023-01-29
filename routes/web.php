@@ -1,13 +1,14 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\News\PostController;
 use App\Http\Controllers\Tags\TagsController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\AAdminController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Categories\CategoryController;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +36,12 @@ Route::post('/admin/register',[RegisterController::class,'createAdmin'])->name('
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin/dashboard',function(){
-    return view('Admin.admin');
-})->middleware('auth:admin');
+
+//========================Dashboard Admin=======================
+
+ Route::resource('/admin/dashboard', AAdminController::class)->middleware('auth:admin');
+
+
 
 //========================Categories=======================
     Route::resource('Categories', CategoryController::class);
@@ -48,6 +52,7 @@ Route::post('Filter_News', [PostController::class,'Filter_Classes'])->name('Filt
 
 //==========================Tags===========================
 Route::resource('Tags', TagsController::class);
+
 
 
 Route::get('/{page}', [AdminController::class,'index']);

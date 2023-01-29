@@ -41,11 +41,12 @@
 
                                         @isset($route)
                                             <form method="POST" action="{{ $route }}">
+                                                @csrf
                                             @else
                                                 <form method="POST" action="{{ route('register') }}">
+                                                    @csrf
                                                 @endisset
 
-                                                @csrf
                                                 <div class="form-group">
                                                     <label>Firstname &amp; Lastname</label> <input
                                                         class="form-control

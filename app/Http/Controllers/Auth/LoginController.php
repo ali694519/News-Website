@@ -41,7 +41,6 @@ class LoginController extends Controller
     }
 
 
-
     public function showAdminLoginForm()
     {
         return view('auth.login', ['url' => route('admin.login-view'), 'title'=>'Admin']);
@@ -53,10 +52,9 @@ class LoginController extends Controller
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
-
         if (\Auth::guard('admin')->attempt($request->only(['email','password']), $request->get('remember'))){
             return redirect()->intended('/admin/dashboard');
-        }
+    }
 
         return back()->withInput($request->only('email', 'remember'));
     }
